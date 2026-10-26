@@ -1,0 +1,128 @@
+Verificação funcional do JAR compilado.
+Spring Boot + H2 + Spring Data JPA + OpenFeign.
+Porta de verificação: 18081 (servicos.url derivada de server.port).
+
+GET /musicas
+HTTP 200
+Resposta: [{"album":"Imagine","artista":"John Lennon","duracao":183,"genero":"Rock","id":1,"titulo":"Imagine"},{"album":"Thriller","artista":"Michael Jackson","duracao":294,"genero":"Pop","id":2,"titulo":"Billie Jean"},{"album":"A Night at the Opera","artista":"Queen","duracao":354,"genero":"Rock","id":3,"titulo":"Bohemian Rhapsody"},{"album":"Getz/Gilberto","artista":"Tom Jobim","duracao":328,"genero":"Bossa Nova","id":4,"titulo":"Garota de Ipanema"},{"album":"Dois","artista":"Legião Urbana","duracao":301,"genero":"Rock","id":5,"titulo":"Tempo Perdido"}]
+
+GET /musicas/1
+HTTP 200
+Resposta: {"album":"Imagine","artista":"John Lennon","duracao":183,"genero":"Rock","id":1,"titulo":"Imagine"}
+
+POST /musicas
+JSON enviado: {"titulo": "Hotel California", "artista": "Eagles", "album": "Hotel California", "duracao": 391, "genero": "Rock"}
+HTTP 200
+Resposta: {"album":"Hotel California","artista":"Eagles","duracao":391,"genero":"Rock","id":6,"titulo":"Hotel California"}
+
+PUT /musicas/6
+JSON enviado: {"titulo": "Hotel California ao vivo", "artista": "Eagles", "album": "Hotel California", "duracao": 391, "genero": "Rock"}
+HTTP 200
+Resposta: {"album":"Hotel California","artista":"Eagles","duracao":391,"genero":"Rock","id":6,"titulo":"Hotel California ao vivo"}
+
+GET /playlists
+HTTP 200
+Resposta: [{"descricao":"Grandes clássicos do rock internacional","id":1,"nome":"Clássicos do Rock"},{"descricao":"Clássicos da música brasileira","id":2,"nome":"Música Brasileira"},{"descricao":"Sucessos do pop internacional","id":3,"nome":"Pop Internacional"},{"descricao":"Músicas para momentos tranquilos","id":4,"nome":"Para Relaxar"},{"descricao":"Minha seleção pessoal de músicas favoritas","id":5,"nome":"Favoritas"}]
+
+POST /playlists
+JSON enviado: {"nome": "Verificação funcional", "descricao": "Playlist temporária da verificação"}
+HTTP 200
+Resposta: {"descricao":"Playlist temporária da verificação","id":6,"nome":"Verificação funcional"}
+
+GET /playlists/6
+HTTP 200
+Resposta: {"descricao":"Playlist temporária da verificação","id":6,"nome":"Verificação funcional"}
+
+PUT /playlists/6
+JSON enviado: {"nome": "Verificação alterada", "descricao": "Playlist temporária da verificação"}
+HTTP 200
+Resposta: {"descricao":"Playlist temporária da verificação","id":6,"nome":"Verificação alterada"}
+
+POST /playlists/6/musicas/6
+HTTP 200
+Resposta: (sem corpo)
+
+GET /playlists/6/musicas
+HTTP 200
+Resposta: [6]
+
+POST /api/adicionar/6/musicas/1
+HTTP 200
+Resposta: Música Imagine adicionada com sucesso à playlist Verificação alterada
+
+POST /reproducao
+JSON enviado: {"playlistid": 6}
+HTTP 200
+Resposta: {"datahora":"2026-10-26T20:41:31.256700734","id":13,"playlistid":6}
+
+GET /reproducao/6
+HTTP 200
+Resposta: [{"datahora":"2026-10-26T20:41:31.256701","id":13,"playlistid":6}]
+
+GET /reproducao/total/6
+HTTP 200
+Resposta: 1
+
+PUT /api/executar/6
+HTTP 200
+Resposta: (sem corpo)
+
+GET /reproducao/total/6
+HTTP 200
+Resposta: 2
+
+POST /statistic
+JSON enviado: {"playlistid": 6}
+HTTP 200
+Resposta: {"datahora":"2026-10-26T20:41:31.356594274","id":15,"playlistid":6}
+
+GET /reproducao/total/6
+HTTP 200
+Resposta: 3
+
+POST /api/adicionar/999/musicas/1
+HTTP 404
+Resposta: Falha na chamada ao serviço: HTTP 404
+
+POST /musicas
+JSON enviado: {"titulo": "   ", "artista": "Eagles", "album": "Hotel California", "duracao": 391, "genero": "Rock"}
+HTTP 400
+Resposta: {"timestamp":"2026-10-26T23:41:31.438Z","status":400,"error":"Bad Request","path":"/musicas"}
+
+DELETE /playlists/6/musicas/6
+HTTP 200
+Resposta: (sem corpo)
+
+GET /playlists/6/musicas
+HTTP 200
+Resposta: [1]
+
+DELETE /playlists/6
+HTTP 200
+Resposta: (sem corpo)
+
+GET /playlists/6
+HTTP 404
+Resposta: {"timestamp":"2026-10-26T23:41:31.488Z","status":404,"error":"Not Found","path":"/playlists/6"}
+
+GET /musicas/1
+HTTP 200
+Resposta: {"album":"Imagine","artista":"John Lennon","duracao":183,"genero":"Rock","id":1,"titulo":"Imagine"}
+
+DELETE /musicas/6
+HTTP 200
+Resposta: (sem corpo)
+
+GET /musicas/6
+HTTP 404
+Resposta: {"timestamp":"2026-10-26T23:41:31.504Z","status":404,"error":"Not Found","path":"/musicas/6"}
+
+GET /musicas
+HTTP 200
+Resposta: [{"album":"Imagine","artista":"John Lennon","duracao":183,"genero":"Rock","id":1,"titulo":"Imagine"},{"album":"Thriller","artista":"Michael Jackson","duracao":294,"genero":"Pop","id":2,"titulo":"Billie Jean"},{"album":"A Night at the Opera","artista":"Queen","duracao":354,"genero":"Rock","id":3,"titulo":"Bohemian Rhapsody"},{"album":"Getz/Gilberto","artista":"Tom Jobim","duracao":328,"genero":"Bossa Nova","id":4,"titulo":"Garota de Ipanema"},{"album":"Dois","artista":"Legião Urbana","duracao":301,"genero":"Rock","id":5,"titulo":"Tempo Perdido"}]
+
+GET /playlists
+HTTP 200
+Resposta: [{"descricao":"Grandes clássicos do rock internacional","id":1,"nome":"Clássicos do Rock"},{"descricao":"Clássicos da música brasileira","id":2,"nome":"Música Brasileira"},{"descricao":"Sucessos do pop internacional","id":3,"nome":"Pop Internacional"},{"descricao":"Músicas para momentos tranquilos","id":4,"nome":"Para Relaxar"},{"descricao":"Minha seleção pessoal de músicas favoritas","id":5,"nome":"Favoritas"}]
+
+Todas as verificações acima concluídas com os códigos e efeitos esperados.

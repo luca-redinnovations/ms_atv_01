@@ -1,0 +1,56 @@
+Maven: clean verify
+Resultado: BUILD SUCCESS
+-------------------------------------------------------------------------------
+Test set: aula.microservicos.playyourlist.FuncionalTests
+-------------------------------------------------------------------------------
+Tests run: 46, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.34 s -- in aula.microservicos.playyourlist.FuncionalTests
+
+Casos funcionais executados:
+APROVADO: dadosIniciaisIguaisAoEnunciado
+APROVADO: apiExecutaViaPostStatisticComOpenFeign
+APROVADO: excluirMusicaVinculadaSemViolarChavesEstrangeiras
+APROVADO: recursosInexistentesNaoAlteramDados
+APROVADO: crudCompletoDeMusicas
+APROVADO: crudDePlaylistsEAssociacoes
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[1]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[2]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[3]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[4]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[5]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[6]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[7]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[8]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[9]
+APROVADO: validarPlaylistNoCadastroENaAlteracao(String, String, Object)[10]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[1]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[2]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[3]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[4]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[5]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[6]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[7]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[8]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[9]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[10]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[11]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[12]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[13]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[14]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[15]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[16]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[17]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[18]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[19]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[20]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[21]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[22]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[23]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[24]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[25]
+APROVADO: validarMusicaNoCadastroENaAlteracao(String, String, Object)[26]
+APROVADO: apiAdicionaComMensagemExataEChamadasHttpFeign
+APROVADO: limitesPermitidosECamposOpcionais
+APROVADO: excluirPlaylistOriginalPreservaMusicasCompartilhadas
+APROVADO: registrarListarEContarReproducoes
+
+SQL conferido contra o enunciado: CREATE TABLE e INSERT preservados integralmente, desconsiderando somente espaços e a ordem dos DROP TABLE.
